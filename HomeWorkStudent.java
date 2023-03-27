@@ -9,10 +9,12 @@ class Student {
     int age;
     String classroom;
     int[] scores;
+    static int option;
 
     public int getId() {
         return id;
     }
+
 
     public void setId(int id) {
         this.id = id;
@@ -45,13 +47,14 @@ class Student {
     Student() {
     }
 
-    public Student(int id, String name, String gender, int age, String classroom, int[] scores) {
+    public Student(int id, String name, String gender, int age, String classroom, int[] scores, int option) {
         this.id = id;
         this.name = name;
         Student.gender = gender;
         this.age = age;
         this.classroom = classroom;
         this.scores = scores;
+        Student.option = option;
     }
 
     static void pressEnterKey() {
@@ -151,7 +154,7 @@ class Student {
         public static void main(String[] args) {
             ArrayList<Student> students = new ArrayList<>();
             Scanner input = new Scanner(System.in);
-            int option;
+            boolean isOptionValid = false;
             do {
                 System.out.println("---------------Student Management Console Application-----------------");
                 System.out.println("---------1. Insert Student to System ");
@@ -160,16 +163,17 @@ class Student {
                 System.out.println("---------4. Delete Student Information ");
                 System.out.println("---------5. Show Student Information ");
                 System.out.println("---------6. Exit ");
-                String strOption;
                 System.out.print(">>> Choose option from 1 - 6 : ");
-                strOption = input.nextLine();
+                String strOption;
                 try {
+                    strOption = input.nextLine();
                     option = Integer.parseUnsignedInt(strOption);
-                } catch (Exception ex) {
-                    option = 0;
-                    System.out.println("Invalid Input !!! Option can be the Number from 1 - 6");pressEnterKey();
+                    isOptionValid = true;
+                }catch (Exception exception){
+                    System.out.println("Invalid Option!!!Option can be only 1 - 6");
+                }while(true) {
+                    if (isOptionValid) break;
                 }
-
                 switch (option) {
                     case 1 -> {
                         System.out.println("-------------------- Insert Student to System -----------------");
