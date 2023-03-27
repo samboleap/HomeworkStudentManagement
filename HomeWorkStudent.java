@@ -227,7 +227,7 @@ class Student {
                                             System.out.println("Age updated successfully!");pressEnterKey();
                                         }
                                         case 5 -> {
-                                            System.out.print("Please input the new classroom");
+                                            System.out.print("Please input the new classroom: ");
                                             String newClassroom = input.next();
                                             student.setClassroom(newClassroom);
                                             input.nextLine();
@@ -296,8 +296,11 @@ class Student {
                                     }
                                 }
                             }
-                            case 3 ->
-                                    System.out.println("Exist...........................................................");
+                            case 3 ->{
+                                input.nextLine();
+                                System.out.println("Exist...........................................................");
+                            }
+
                         }
                     }
                     case 4 -> {
